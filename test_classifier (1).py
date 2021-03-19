@@ -21,7 +21,7 @@ model=load_model('snake_pred.h5')
 
 import tensorflow as tf
 
-image = 'anacanda1.jpg'
+image = 'anaconda1.jpg'
 
 import cv2
 
@@ -34,11 +34,4 @@ def prepare(image):
 y=model.predict([prepare('anaconda1.jpg')])
 
 print(y)
-
-score = y[0]
-
-# Commented out IPython magic to ensure Python compatibility.
-print(
-    "This is %.2f percent chance python and %.2f anaconda."
-#     %(100*(1-score), 100*score)
-)
+#the class labels 0 and 1 should be spelt out for anaconda and python.
