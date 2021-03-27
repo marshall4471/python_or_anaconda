@@ -17,7 +17,7 @@ uploaded = files.upload()
 from google.colab import files
 uploaded = files.upload()
 
-model=load_model('snake_pred.h5')
+model=load_model('snake_pred4.h5')
 
 import tensorflow as tf
 
