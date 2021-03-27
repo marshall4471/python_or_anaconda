@@ -21,13 +21,13 @@ file2 = ("/content/gdrive/MyDrive/archive/valid")
 from keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(rescale = 1./255,
-                                   shear_range = 0.2,
-                                   zoom_range = 0.2,
+                                   shear_range = 0.05,
+                                   zoom_range = 0.05,
                                    horizontal_flip = True)
 
 train_set = train_datagen.flow_from_directory(file1,
                                                  target_size = (384, 384),
-                                                 batch_size = 1,
+                                                 batch_size = 4,
                                                  class_mode = 'binary')
 
 import tensorflow as tf
@@ -36,11 +36,12 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 test_set = test_datagen.flow_from_directory(file2,
                                             target_size = (384, 384),
-                                            batch_size = 1,
+                                            batch_size = 4,
                                             class_mode = 'binary')
 
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=[384, 384, 3]))
+model.add(tf.keras.layers.Conv2D(64, kernel_isze=3, activation='relu'))
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 model.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
