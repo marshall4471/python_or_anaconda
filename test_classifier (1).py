@@ -35,3 +35,8 @@ y=model.predict([prepare('anaconda1.jpg')])
 
 print(y)
 #the class labels 0 and 1 should be spelt out for anaconda and python.
+score = y[0]
+print(
+    "This is %.2f percent chance anaconda and %.2f python."
+    %(100*(1-score), 100*score)
+)
