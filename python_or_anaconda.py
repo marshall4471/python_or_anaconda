@@ -38,18 +38,19 @@ test_set = test_datagen.flow_from_directory(file2,
                                             target_size = (384, 384),
                                             batch_size = 4,
                                             class_mode = 'binary')
-
 model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Conv2D(128, kernel_size=3, activation='relu', input_shape=[384, 384, 3]))
-model.add(tf.keras.layers.Conv2D(64, kernel_isze=3, activation='relu'))
+model.add(tf.keras.layers.Conv2D(128, kernel_size=5, padding='valid', activation='relu', input_shape=[384, 384, 3]))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
+model.add(tf.keras.layers.Conv2D(32, kernel_size=3, padding='valid', activation='relu'))
+model.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
 model.add(tf.keras.layers.Flatten())
-model.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 model.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.summary()
 
 history = model.fit(train_set, validation_data =test_set, epochs=30, verbose=1)
-
-model.save("snake_pred.h5")
+history.history['accuracy']
+model.save("snake_pred4.h5")
 
 
 
