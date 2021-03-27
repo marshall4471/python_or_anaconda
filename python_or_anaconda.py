@@ -48,7 +48,7 @@ model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 model.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.summary()
 
-history = model.fit(train_set, validation_data =test_set, epochs=30, verbose=1)
+history = model.fit(train_set, validation_data =test_set, epochs=15, verbose=1)
 history.history['accuracy']
 model.save("snake_pred4.h5")
 
