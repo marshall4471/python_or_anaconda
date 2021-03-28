@@ -50,7 +50,7 @@ model.summary()
 
 history = model.fit(train_set, validation_data =test_set, epochs=15, verbose=1)
 history.history['accuracy']
-model.save("snake_pred4.h5")
+model.save("snake_pred5.h5")
 
 
 
