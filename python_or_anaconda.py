@@ -27,7 +27,7 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 train_set = train_datagen.flow_from_directory(file1,
                                                  target_size = (384, 384),
-                                                 batch_size = 4,
+                                                 batch_size = 16,
                                                  class_mode = 'binary')
 
 import tensorflow as tf
@@ -36,7 +36,7 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 test_set = test_datagen.flow_from_directory(file2,
                                             target_size = (384, 384),
-                                            batch_size = 4,
+                                            batch_size = 16,
                                             class_mode = 'binary')
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Conv2D(128, kernel_size=5, padding='valid', activation='relu', input_shape=[384, 384, 3]))
