@@ -38,19 +38,24 @@ test_set = test_datagen.flow_from_directory(file2,
                                             target_size = (384, 384),
                                             batch_size = 16,
                                             class_mode = 'binary')
-model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Conv2D(128, kernel_size=[5,5], padding='valid', activation='relu', input_shape=[384, 384, 3]))
-model.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
-model.add(tf.keras.layers.Conv2D(32, kernel_size=[3,3], padding='valid', activation='relu'))
-model.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
-model.add(tf.keras.layers.Flatten())
-model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
-model.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
-model.summary()
+cnn = tf.keras.models.Sequential()
+cnn.add(tf.keras.layers.Conv2D(128, kernel_size=[5,5], padding='valid', activation='relu', input_shape=[384, 384, 3]))
+cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
+cnn.add(tf.keras.layers.Conv2D(64, kernel_size=[5,5], padding='valid', activation='relu'))
+cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
+cnn.add(tf.keras.layers.Conv2D(32, kernel_size=[3,3],padding='valid', activation='relu' ))
+cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
+cnn.add(tf.keras.layers.Flatten())
+cnn.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+cnn.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
+cnn.summary()
 
-history = model.fit(train_set, validation_data =test_set, epochs=15, verbose=1)
-history.history['accuracy']
-model.save("snake_pred6.h5")
+cnn = cnn.fit(train_set, validation_data =test_set, epochs=25, verbose=2)
+cnn.history['accuracy']
+cnn.history['loss']
+cnn.history['val_accuracy']
+cnn.history['val_loss']
+model.save("snake_pred9.h5")
 
 
 
