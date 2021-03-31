@@ -40,3 +40,10 @@ print(
     "This is %.2f percent chance anaconda and %.2f python."
     %(100*(1-score), 100*score)
 )
+from matplotlib import pyplot as plt
+
+img = cv2.imread('anaconda.jpg',0)
+plt.imshow(img, interpolation = 'bicubic')
+plt.xticks([]), plt.yticks([])  
+plt.show()
+#the picture of the anaconda
