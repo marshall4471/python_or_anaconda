@@ -42,7 +42,7 @@ print(
 )
 from matplotlib import pyplot as plt
 
-img = cv2.imread('anaconda.jpg',0)
+img = cv2.imread('anaconda1.jpg',0)
 plt.imshow(img, interpolation = 'bicubic')
 plt.xticks([]), plt.yticks([])  
 plt.show()
