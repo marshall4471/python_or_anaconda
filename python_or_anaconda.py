@@ -41,7 +41,7 @@ test_set = test_datagen.flow_from_directory(file2,
 cnn = tf.keras.models.Sequential()
 cnn.add(tf.keras.layers.Conv2D(128, kernel_size=[5,5], padding='valid', activation='relu', input_shape=[384, 384, 3]))
 cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
-cnn.add(tf.keras.layers.Conv2D(64, kernel_size=[5,5], padding='valid', activation='relu'))
+cnn.add(tf.keras.layers.Conv2D(64, kernel_size=[3,3], padding='valid', activation='relu'))
 cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
 cnn.add(tf.keras.layers.Conv2D(32, kernel_size=[3,3],padding='valid', activation='relu' ))
 cnn.add(tf.keras.layers.MaxPooling2D(pool_size=[3,3], strides=2, padding='valid'))
@@ -50,7 +50,7 @@ cnn.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 cnn.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['accuracy'])
 cnn.summary()
 
-cnn = cnn.fit(train_set, validation_data =test_set, epochs=25, verbose=2)
+cnn = cnn.fit(train_set, validation_data =test_set, epochs=30, verbose=2)
 cnn.history['accuracy']
 cnn.history['loss']
 cnn.history['val_accuracy']
