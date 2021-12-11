@@ -11,13 +11,9 @@ from tensorflow.keras.models import load_model
 
 import numpy as np
 
-from google.colab import files
-uploaded = files.upload()
 
-from google.colab import files
-uploaded = files.upload()
 
-model=load_model('snake_pred9.h5')
+model=load_model('model.h5')
 
 import tensorflow as tf
 
